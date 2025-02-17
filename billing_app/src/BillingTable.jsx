@@ -51,12 +51,35 @@ const BillingTable = () => {
     }, 0);
   };
 
+  const addRow = () => {
+    setData((prevData) => [
+      ...prevData,
+      { name: "New Shop", orders: fruits.reduce((acc, fruit) => ({ ...acc, [fruit]: "" }), {}) },
+    ]);
+  };
+
+  const addColumn = () => {
+    const newFruit = prompt("Enter fruit name:");
+    if (newFruit) {
+      setFruits((prevFruits) => [...prevFruits, newFruit]);
+      setFruitPrices((prevPrices) => ({ ...prevPrices, [newFruit]: 0 }));
+      setData((prevData) =>
+        prevData.map((shop) => ({
+          ...shop,
+          orders: { ...shop.orders, [newFruit]: "" },
+        }))
+      );
+    }
+  };
+
   const generateBill = (shop) => {
     setSelectedShop(shop);
   };
 
   return (
     <div className="p-4">
+      <button onClick={addRow} className="mb-2 p-2 bg-blue-500 text-white rounded">Add Shop</button>
+      <button onClick={addColumn} className="mb-2 ml-2 p-2 bg-green-500 text-white rounded">Add Fruit</button>
       <table className="w-full border-collapse border border-gray-400">
         <thead>
           <tr className="bg-gray-200">
@@ -132,6 +155,10 @@ const BillingTable = () => {
               })}
             </tbody>
           </table>
+           {/* Total Sum of Fruits */}
+          <div className="text-right font-bold">
+            <p>Total Sum of Fruits: ${calculateTotal(selectedShop.orders).toFixed(2)}</p>
+          </div>
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const initialFruits = ["Apples", "Bananas", "Oranges", "Grapes"];
+const initialFruits = ["Sweet lime I", "Sweet lime II", "Sweet lime III", "Pomegranate", "Grapes", "Pineapple", "Apple", "Sapota", "Watermelon", "Kiran", "Musk", "Athi", "Butter", "Papali"];
 const initialShops = ["Shop A", "Shop B", "Shop C"];
 
 const BillingTable = () => {

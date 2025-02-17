@@ -33,6 +33,17 @@ const BillingTable = () => {
     });
   };
 
+  const handleShopNameChange = (shopIndex, value) => {
+    setData((prevData) => {
+      const newData = [...prevData];
+      newData[shopIndex] = {
+        ...newData[shopIndex],
+        name: value,
+      };
+      return newData;
+    });
+  };
+
   const handleFruitPriceChange = (fruit) => {
     const perKg = prompt(`Enter price per kg for ₹{fruit}:`);
     const perPiece = prompt(`Enter price per piece for ₹{fruit}:`);
@@ -94,9 +105,16 @@ const BillingTable = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((shop, index) => (
+        {data.map((shop, index) => (
             <tr key={index} className="text-center">
-              <td className="border border-gray-400 p-2">{shop.name}</td>
+              <td className="border border-gray-400 p-2">
+                <input
+                  type="text"
+                  value={shop.name}
+                  onChange={(e) => handleShopNameChange(index, e.target.value)}
+                  className="w-full p-1 border border-gray-300 text-center"
+                />
+              </td>
               {fruits.map((fruit) => (
                 <td key={fruit} className="border border-gray-400 p-2">
                   <input

@@ -34,8 +34,8 @@ const BillingTable = () => {
   };
 
   const handleFruitPriceChange = (fruit) => {
-    const perKg = prompt(`Enter price per kg for ${fruit}:`);
-    const perPiece = prompt(`Enter price per piece for ${fruit}:`);
+    const perKg = prompt(`Enter price per kg for ₹{fruit}:`);
+    const perPiece = prompt(`Enter price per piece for ₹{fruit}:`);
     if (!isNaN(perKg) && !isNaN(perPiece) && perKg !== null && perPiece !== null) {
       setFruitPrices((prevPrices) => ({
         ...prevPrices,
@@ -86,7 +86,7 @@ const BillingTable = () => {
             <th className="border border-gray-400 p-2">Shop Name</th>
             {fruits.map((fruit) => (
               <th key={fruit} className="border border-gray-400 p-2 cursor-pointer" onClick={() => handleFruitPriceChange(fruit)}>
-                {fruit} (Kg: ${fruitPrices[fruit].perKg}, Piece: ${fruitPrices[fruit].perPiece})
+                {fruit} (Kg: ₹{fruitPrices[fruit].perKg}, Piece: ₹{fruitPrices[fruit].perPiece})
               </th>
             ))}
             <th className="border border-gray-400 p-2">Total</th>
@@ -115,7 +115,7 @@ const BillingTable = () => {
                   />
                 </td>
               ))}
-              <td className="border border-gray-400 p-2 font-bold">${calculateTotal(shop.orders).toFixed(2)}</td>
+              <td className="border border-gray-400 p-2 font-bold">₹{calculateTotal(shop.orders).toFixed(2)}</td>
               <td className="border border-gray-400 p-2">
                 <button onClick={() => generateBill(shop)} className="p-2 bg-blue-500 text-white rounded">Generate Bill</button>
               </td>
@@ -145,11 +145,11 @@ const BillingTable = () => {
                 return (quantity.perKg || quantity.perPiece) ? (
                   <tr key={fruit} className="text-center">
                     <td className="border border-gray-400 p-2">{fruit}</td>
-                    <td className="border border-gray-400 p-2">${fruitPrices[fruit].perKg}</td>
+                    <td className="border border-gray-400 p-2">₹{fruitPrices[fruit].perKg}</td>
                     <td className="border border-gray-400 p-2">{quantity.perKg}</td>
-                    <td className="border border-gray-400 p-2">${fruitPrices[fruit].perPiece}</td>
+                    <td className="border border-gray-400 p-2">₹{fruitPrices[fruit].perPiece}</td>
                     <td className="border border-gray-400 p-2">{quantity.perPiece}</td>
-                    <td className="border border-gray-400 p-2">${total.toFixed(2)}</td>
+                    <td className="border border-gray-400 p-2">₹{total.toFixed(2)}</td>
                   </tr>
                 ) : null;
               })}
@@ -157,7 +157,7 @@ const BillingTable = () => {
           </table>
            {/* Total Sum of Fruits */}
           <div className="text-right font-bold">
-            <p>Total Sum of Fruits: ${calculateTotal(selectedShop.orders).toFixed(2)}</p>
+            <p>Total Sum of Fruits: ₹{calculateTotal(selectedShop.orders).toFixed(2)}</p>
           </div>
         </div>
       )}

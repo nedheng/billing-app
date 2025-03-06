@@ -1,6 +1,32 @@
 import React, { useState } from "react";
 
-const initialFruits = ["Sweet lime I", "Sweet lime II", "Sweet lime III", "Pomegranate", "Grapes", "Pineapple", "Apple", "Sapota", "Watermelon", "Kiran", "Musk", "Athi", "Butter", "Papali"];
+const initialFruits = ["1Sweet lime", "2Sweet lime", "3Sweet lime","Pomegranate", 
+"Grapes",
+"Pineapple", 
+"Apple",
+"Sappota",
+"Water melon", 
+"Water melonTop",
+"Kiran",
+"Musk",
+"Athi",
+"Butter top",
+"Butter",
+"Papaya", 
+"Top",
+"Lemon",
+"Orange", 
+"Dragon", 
+"Mango",
+"Carrot" ,
+"Beetroot",
+"Strawberry" ,
+"Seethapalam",
+"Red banana",
+"Nentram",
+"Dates",
+"Amla",
+"Kiwi"];
 const initialShops = ["Shop A", "Shop B", "Shop C"];
 
 const BillingTable = () => {
